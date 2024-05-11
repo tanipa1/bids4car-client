@@ -1,0 +1,6 @@
+.active{
+    border-bottom: 2px solid #B20404;
+    font-weight: 500;
+    color: white !important;
+    background-color: unset !important;
+}
