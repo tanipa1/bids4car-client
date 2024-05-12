@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Ridesharers from "../Layouts/Ridesharers/Ridesharers";
+import RidesharersHome from "../Pages/RidesharersPages/RidesharersHome/RidesharersHome";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
         element:<Ridesharers></Ridesharers>,
         children: [
             {
-                
+                path: '/ridesharers',
+                element: <RidesharersHome></RidesharersHome>
             }
         ]
     }
