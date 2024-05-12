@@ -5,6 +5,8 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Ridesharers from "../Layouts/Ridesharers/Ridesharers";
 import RidesharersHome from "../Pages/RidesharersPages/RidesharersHome/RidesharersHome";
+import AdminPanel from "../Layouts/AdminPanel/AdminPanel";
+import ManageUsers from "../Pages/AdminPages/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +35,16 @@ const router = createBrowserRouter([
             {
                 path: '/ridesharers',
                 element: <RidesharersHome></RidesharersHome>
+            }
+        ]
+    },
+    {
+        path: '/admin',
+        element: <AdminPanel></AdminPanel>,
+        children: [
+            {
+                path: '/admin',
+                element: <ManageUsers></ManageUsers>
             }
         ]
     }
