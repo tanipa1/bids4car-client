@@ -8,6 +8,7 @@ import RidesharersHome from "../Pages/RidesharersPages/RidesharersHome/Rideshare
 import AdminPanel from "../Layouts/AdminPanel/AdminPanel";
 import ManageUsers from "../Pages/AdminPages/ManageUsers/ManageUsers";
 import ManageRidesharers from "../Pages/AdminPages/ManageRidesharers/ManageRidesharers";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: '/signUp',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/about',
+                element: <AboutUs></AboutUs>
             },
 
         ]
