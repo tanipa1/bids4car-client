@@ -39,10 +39,10 @@ const AdminPanel = () => {
           <Link to='/'><img className="w-40 mx-auto mb-10" src={logo} alt="" /></Link>
           <div className="grid justify-center">
           <li>
-            <ActiveLink to='/admin'>Manage Users</ActiveLink>
+            <ActiveLink to='/admin/user'>Manage Users</ActiveLink>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <ActiveLink to='/admin/ridesharers' >Manage Ridesharers</ActiveLink>
           </li>
           </div>
         </ul>

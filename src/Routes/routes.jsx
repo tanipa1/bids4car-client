@@ -7,6 +7,7 @@ import Ridesharers from "../Layouts/Ridesharers/Ridesharers";
 import RidesharersHome from "../Pages/RidesharersPages/RidesharersHome/RidesharersHome";
 import AdminPanel from "../Layouts/AdminPanel/AdminPanel";
 import ManageUsers from "../Pages/AdminPages/ManageUsers/ManageUsers";
+import ManageRidesharers from "../Pages/AdminPages/ManageRidesharers/ManageRidesharers";
 
 const router = createBrowserRouter([
     {
@@ -43,9 +44,13 @@ const router = createBrowserRouter([
         element: <AdminPanel></AdminPanel>,
         children: [
             {
-                path: '/admin',
+                path: '/admin/user',
                 element: <ManageUsers></ManageUsers>
-            }
+            },
+            {
+                path: '/admin/ridesharers',
+                element: <ManageRidesharers></ManageRidesharers>
+            },
         ]
     }
 ])
