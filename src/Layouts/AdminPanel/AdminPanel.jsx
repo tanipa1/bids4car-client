@@ -45,7 +45,7 @@ const AdminPanel = () => {
             <ActiveLink to='/admin/ridesharers' >Manage Ridesharers</ActiveLink>
           </li>
           <li>
-            <ActiveLink to='/admin/rentFair' >Choose Rent Fair</ActiveLink>
+            <ActiveLink to='/admin/fairRent' >Choose Rent</ActiveLink>
           </li>
           </div>
         </ul>

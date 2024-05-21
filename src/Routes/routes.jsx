@@ -9,6 +9,7 @@ import AdminPanel from "../Layouts/AdminPanel/AdminPanel";
 import ManageUsers from "../Pages/AdminPages/ManageUsers/ManageUsers";
 import ManageRidesharers from "../Pages/AdminPages/ManageRidesharers/ManageRidesharers";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import FairRent from "../Pages/AdminPages/FairRent/FairRent";
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/admin/ridesharers',
                 element: <ManageRidesharers></ManageRidesharers>
+            },
+            {
+                path: '/admin/fairRent',
+                element: <FairRent></FairRent>
             },
         ]
     }
