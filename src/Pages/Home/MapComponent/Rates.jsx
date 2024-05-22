@@ -1,13 +1,63 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
-const Rates = ({ rate, distance }) => {
+const Rates = ({ rate, distance, destination, pickup }) => {
   const { carType, rent } = rate;
   const totalRate = Math.round(rent * distance);
+  const { user } = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data, event) => {
+    event.preventDefault();
+    const { passenger_bid, phone_no } = data;
+    const rideRequests = {
+      passenger_bid: parseFloat(passenger_bid),
+      passenger_name: user.displayName,
+      passenger_email: user.email,
+      phone_no,
+      pickup,
+      destination, 
+      actual_rate: totalRate
+    };
+
+    fetch("http://localhost:5000/rideRequests", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(rideRequests),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Ride Request sent", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+          window.location.reload();
+          reset();
+        }
+      });
+  };
 
   return (
     <div className="my-5">
-      <p className="mb-2 font-semibold text-lg">{carType} :</p>
       <div className="flex justify-between items-center">
+        <p className="mb-2 font-semibold text-lg">{carType} :</p>
         <p className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,16 +72,48 @@ const Rates = ({ rate, distance }) => {
           </svg>
           <span>{totalRate}</span>
         </p>
-        <div className="flex gap-4 items-center">
-          <button className="btn btn-xs btn-outline text-black ">
-            Request Ride
-          </button>
-        </div>
-        <div>
-        <button className="btn btn-xs btn-outline text-black ">
-            Sent a Bid
-          </button>
-        </div>
+      </div>
+      <div className="flex justify-between items-center">
+        {distance ? <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex justify-end items-center join">
+            <input
+              {...register("phone_no")}
+              className=" join-item input input-bordered input-xs bg-white border-gray-300 rounded-md"
+              type="number"
+              placeholder="Contact No."
+            />
+            <input
+              {...register("passenger_bid")}
+              className="w-1/2 join-item input input-bordered input-xs bg-white border-gray-300 rounded-md"
+              type="number"
+              placeholder="Set a Bid"
+            />
+            {!user?.email ? <input
+            disabled
+              type="submit"
+              value="Login to Request"
+              className="join-item disabled:text-white btn btn-xs text-white "
+            />:
+            <input
+              type="submit"
+              value="Request Ride"
+              className="join-item rounded-md btn btn-xs btn-outline text-black "
+            />
+            }
+            <ToastContainer
+                        position="top-center"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="dark"
+                    />
+          </div>
+        </form>: <></>}
       </div>
     </div>
   );

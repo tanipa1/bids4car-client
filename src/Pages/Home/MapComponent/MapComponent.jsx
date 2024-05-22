@@ -177,6 +177,8 @@ const MapComponent = () => {
               key={rate._id} 
               rate={rate}
               distance={distance}
+              pickup={pickup}
+              destination={destination}
               ></Rates>
             ))}
           </div>

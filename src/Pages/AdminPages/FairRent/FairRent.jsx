@@ -13,7 +13,7 @@ const FairRent = () => {
   const onSubmit = (data, event) => {
     event.preventDefault();
     const { carType, rent} = data;
-        const rates = { rent };
+        const rates = { rent: parseFloat(rent) };
 
         fetch(`http://localhost:5000/rates/${carType}`, {
             method: 'PATCH',
@@ -68,7 +68,7 @@ const FairRent = () => {
             <div>
               <p className="text-center font-semibold mb-2">Rate per km</p>
               <input
-                type="text"
+                type="number"
                 {...register("rent", { required: true })}
                 className="input bg-white input-bordered border-t-2 border-black"
               />
