@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ManageRidesharers = () => {
     const [ridesharers, setRidesharers] = useState([]);

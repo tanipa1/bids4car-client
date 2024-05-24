@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.avatar.offline:before{
+    border: 1px solid white;
+    background-color: gray !important;
+}
