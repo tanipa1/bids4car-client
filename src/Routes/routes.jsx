@@ -10,6 +10,8 @@ import ManageUsers from "../Pages/AdminPages/ManageUsers/ManageUsers";
 import ManageRidesharers from "../Pages/AdminPages/ManageRidesharers/ManageRidesharers";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import FairRent from "../Pages/AdminPages/FairRent/FairRent";
+import RideStatus from "../Pages/RidesharersPages/RideStatus/RideStatus";
+import Passengers from "../Layouts/Passengers/Passengers";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +44,11 @@ const router = createBrowserRouter([
             {
                 path: '/ridesharers',
                 element: <RidesharersHome></RidesharersHome>
-            }
+            },
+            {
+                path: 'ridesharers/rideStatus',
+                element: <RideStatus></RideStatus>
+            },
         ]
     },
     {
@@ -61,6 +67,15 @@ const router = createBrowserRouter([
                 path: '/admin/fairRent',
                 element: <FairRent></FairRent>
             },
+        ]
+    },
+    {
+        path: '/passengers',
+        element: <Passengers></Passengers>,
+        children: [
+            {
+                
+            }
         ]
     }
 ])

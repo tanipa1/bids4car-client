@@ -9,6 +9,7 @@ const RidesharersNav = () => {
     const navItems = (
         <>
           <li><ActiveLink to="/">Home</ActiveLink></li>
+          <li><ActiveLink to="ridesharers/rideStatus">Ride Status</ActiveLink></li>
           {/* {user ?
                 <>
                     {users?.map(user =>
