@@ -9,7 +9,6 @@ const RidesharersNav = () => {
     const navItems = (
         <>
           <li><ActiveLink to="/">Home</ActiveLink></li>
-          <li><ActiveLink to="/about">About Us</ActiveLink></li>
           {/* {user ?
                 <>
                     {users?.map(user =>
@@ -61,7 +60,7 @@ const RidesharersNav = () => {
       </div>
       <div className="navbar-end">
       <ul className="menu menu-horizontal px-1">{navItems}</ul>
-        <Link className="btn btn-sm bg-white hover:bg-black hover:text-white text-black border-2 border-[#B20404]" to='/'>Back to Home</Link>
+        <Link className="btn btn-sm bg-white hover:bg-black hover:text-white text-black border-2 border-[#B20404]" to='/ridesharers'>Dashboard</Link>
       </div>
     </div>
   );

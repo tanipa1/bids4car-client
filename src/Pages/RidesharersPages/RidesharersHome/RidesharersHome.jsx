@@ -12,7 +12,8 @@ const RidesharersHome = () => {
     fetch("http://localhost:5000/ridesharers")
       .then((res) => res.json())
       .then((data) => {
-        setRidesharers(data);
+        const filteredRidesharers = data.filter(filterRidesharer => user.email === filterRidesharer.email);
+        setRidesharers(filteredRidesharers);
       });
   }, []);
 
@@ -21,9 +22,9 @@ const RidesharersHome = () => {
       {ridesharers.length === 0 ?
                 <div className="grid justify-center">
                     <div>
-                        <TypeAnimation className='font-bold w-full  font-mono text-4xl'
+                        <TypeAnimation className='font-bold text-black w-full text-center mt-2 font-mono text-4xl'
                             style={{
-                                height: '150px',
+                                height: '125px',
                                 width: '1000px',
                                 display: 'block',
                             }}
@@ -40,7 +41,7 @@ const RidesharersHome = () => {
                                 <>
                                     <RidesharersDetails ridesharer={ridesharer}></RidesharersDetails>
                                 </> :
-                                <div className="grid gap-3 justify-center ">
+                                <div className="grid text-black items-center gap-3 justify-center ">
                                     <p className="mt-12 font-semibold text-xl">Your Information has been sent to Admin for verification.</p>
 
                                     <p className="flex gap-2">

@@ -12,7 +12,8 @@ const RideRequests = ({ ridesharer }) => {
     fetch("http://localhost:5000/rideRequests")
       .then((res) => res.json())
       .then((data) => {
-        setRideRequests(data);
+        const filteredData = data.filter(filterRequest => filterRequest.status !== "Accepted" && filterRequest.carType === ridesharer.carType ) /* Car Type filter korte hobe */
+        setRideRequests(filteredData);
       });
   }, []);
 
@@ -48,9 +49,10 @@ const RideRequests = ({ ridesharer }) => {
   return (
     <div className="p-8">
       <h1 className="text-black text-center font-bold text-lg mb-8">___Ride Requests___</h1>
-      {ridesharer?.activity === "Active" && ridesharer?.status !== "Accepted" ? (
+      {ridesharer?.activity === "Active" ? (
         <>
-          {rideRequests.map((rideRequest) => (
+          {rideRequests.length === 0 ? <p className="text-black font-semibold text-lg">You've No Ride Request Right Now...</p> : 
+          <>{rideRequests.map((rideRequest) => (
             <div key={rideRequest._id}>
               <div className="card card-compact border-gray-400 border-[1px] w-96 bg-base-100 shadow-xl">
                 <div className="card-body bg-white text-black">
@@ -118,7 +120,7 @@ const RideRequests = ({ ridesharer }) => {
                 </div>
               </div>
             </div>
-          ))}
+          ))}</> }
         </>
       ) : (
         <>

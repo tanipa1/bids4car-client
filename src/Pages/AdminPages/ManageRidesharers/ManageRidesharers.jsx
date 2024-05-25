@@ -67,11 +67,11 @@ const ManageRidesharers = () => {
     }
 
     return (
-        <div className='text-black'>
+        <div className='text-black grid gap-8'>
             {ridesharers.map(ridesharer =>
                 <div className="flex shadow-xl pr-10 justify-between gap-8 items-center" key={ridesharer._id}>
                     <div>
-                        <img className="w-[200px]" src={ridesharer.image} alt="" />
+                        <img className="w-[200px] h-[200px]" src={ridesharer.image} alt="" />
                     </div>
                     <div className="">
                         <h1 className="font-bold text-lg">{ridesharer.name}</h1>

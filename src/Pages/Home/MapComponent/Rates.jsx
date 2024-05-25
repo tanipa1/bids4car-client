@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const Rates = ({ rate, distance, destination, pickup }) => {
   const { carType, rent } = rate;
@@ -25,8 +25,9 @@ const Rates = ({ rate, distance, destination, pickup }) => {
       passenger_email: user.email,
       phone_no,
       pickup,
-      destination, 
-      actual_rate: totalRate
+      destination,
+      actual_rate: totalRate,
+      carType,
     };
 
     fetch("http://localhost:5000/rideRequests", {
@@ -75,46 +76,52 @@ const Rates = ({ rate, distance, destination, pickup }) => {
         </p>
       </div>
       <div className="flex justify-between items-center">
-        {distance ? <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex justify-end items-center join">
-            <input
-              {...register("phone_no")}
-              className=" join-item input input-bordered input-xs bg-white border-gray-300 rounded-md"
-              type="number"
-              placeholder="Contact No."
-            />
-            <input
-              {...register("passenger_bid")}
-              className="w-1/2 join-item input input-bordered input-xs bg-white border-gray-300 rounded-md"
-              type="number"
-              placeholder="Set a Bid"
-            />
-            {!user?.email ? <input
-            disabled
-              type="submit"
-              value="Login to Request"
-              className="join-item disabled:text-white btn btn-xs text-white "
-            />:
-            <input
-              type="submit"
-              value="Request Ride"
-              className="join-item rounded-md btn btn-xs btn-outline text-black "
-            />
-            }
-            <ToastContainer
-                        position="top-center"
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="dark"
-                    />
-          </div>
-        </form>: <></>}
+        {distance ? (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex justify-end items-center join">
+              <input
+                {...register("phone_no")}
+                className=" join-item input input-bordered input-xs bg-white border-gray-300 rounded-md"
+                type="number"
+                placeholder="Contact No."
+              />
+              <input
+                {...register("passenger_bid")}
+                className="w-1/2 join-item input input-bordered input-xs bg-white border-gray-300 rounded-md"
+                type="number"
+                placeholder="Set a Bid"
+              />
+              {!user?.email ? (
+                <input
+                  disabled
+                  type="submit"
+                  value="Login to Request"
+                  className="join-item disabled:text-white btn btn-xs text-white "
+                />
+              ) : (
+                <input
+                  type="submit"
+                  value="Request Ride"
+                  className="join-item rounded-md btn btn-xs btn-outline text-black "
+                />
+              )}
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
+            </div>
+          </form>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
