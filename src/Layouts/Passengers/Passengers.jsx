@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Outlet } from 'react-router-dom';
+import PassengersNav from '../../Pages/shared/PassengersNav/PassengersNav';
 
 const Passengers = () => {
     const { loading } = useContext(AuthContext);
@@ -15,6 +16,7 @@ const Passengers = () => {
   
     return (
         <div>
+            <PassengersNav></PassengersNav>
             <Outlet></Outlet>
         </div>
     );
